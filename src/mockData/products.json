@@ -1,0 +1,44 @@
+[
+    {
+      "id": "prod_1",
+      "name": "Apple iPhone 15",
+      "category": "Smartphone",
+      "platform_breakdown": {
+        "twitter": 45,
+        "reddit": 25,
+        "news": 15,
+        "reviews": 15
+      },
+      "current_sentiment": 82,
+      "growth": 5.4,
+      "mentions_vol": 12450
+    },
+    {
+      "id": "prod_2",
+      "name": "Samsung Galaxy S24",
+      "category": "Smartphone",
+      "platform_breakdown": {
+        "twitter": 40,
+        "reddit": 30,
+        "news": 20,
+        "reviews": 10
+      },
+      "current_sentiment": 76,
+      "growth": -2.1,
+      "mentions_vol": 8900
+    },
+    {
+      "id": "prod_3",
+      "name": "Google Pixel 8",
+      "category": "Smartphone",
+      "platform_breakdown": {
+        "twitter": 35,
+        "reddit": 40,
+        "news": 10,
+        "reviews": 15
+      },
+      "current_sentiment": 88,
+      "growth": 12.8,
+      "mentions_vol": 5600
+    }
+  ]
