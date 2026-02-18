@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Github, Circle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Eye, EyeOff, Github } from 'lucide-react';
 import { toast } from 'sonner';
 
 const LoginPage = () => {
@@ -35,12 +35,6 @@ const LoginPage = () => {
         setIsSignUp(!isSignUp);
         setFormData({ firstName: '', lastName: '', email: '', password: '' });
     };
-
-    const steps = [
-        { number: 1, text: "Sign up your account", active: true },
-        { number: 2, text: "Set up your workspace", active: false },
-        { number: 3, text: "Set up your profile", active: false }
-    ];
 
     const transition = { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] };
 
@@ -92,6 +86,7 @@ const LoginPage = () => {
                                 <input
                                     type="email"
                                     name="email"
+                                    required
                                     placeholder="eg. john.doe@example.com"
                                     className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm"
                                     value={formData.email}
@@ -104,6 +99,7 @@ const LoginPage = () => {
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         name="password"
+                                        required
                                         placeholder="Enter your password"
                                         className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all pr-12 text-sm"
                                         value={formData.password}
@@ -175,23 +171,23 @@ const LoginPage = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-sm font-semibold text-white">First Name</label>
-                                    <input type="text" name="firstName" placeholder="eg. John" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm" value={formData.firstName} onChange={handleChange} />
+                                    <input type="text" name="firstName" required placeholder="eg. John" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm" value={formData.firstName} onChange={handleChange} />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-semibold text-white">Last Name</label>
-                                    <input type="text" name="lastName" placeholder="eg. Francisco" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm" value={formData.lastName} onChange={handleChange} />
+                                    <input type="text" name="lastName" required placeholder="eg. Francisco" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm" value={formData.lastName} onChange={handleChange} />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-semibold text-white">Email</label>
-                                <input type="email" name="email" placeholder="eg. johnfrans@gmail.com" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm" value={formData.email} onChange={handleChange} />
+                                <input type="email" name="email" required placeholder="eg. johnfrans@gmail.com" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all text-sm" value={formData.email} onChange={handleChange} />
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-semibold text-white">Password</label>
                                 <div className="relative">
-                                    <input type={showPassword ? "text" : "password"} name="password" placeholder="Enter your password" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all pr-12 text-sm" value={formData.password} onChange={handleChange} />
+                                    <input type={showPassword ? "text" : "password"} required name="password" placeholder="Enter your password" className="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all pr-12 text-sm" value={formData.password} onChange={handleChange} />
                                     <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 transition-colors">
                                         {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                                     </button>
@@ -217,15 +213,15 @@ const LoginPage = () => {
                         x: isSignUp ? "0%" : "100%"
                     }}
                     transition={transition}
-                    className="absolute top-0 left-0 hidden lg:flex flex-col justify-end w-1/2 h-full p-12 overflow-hidden z-20 pointer-events-none"
+                    className="absolute top-0 left-0 hidden lg:flex flex-col justify-end w-1/2 h-full p-12 pb- overflow-hidden z-20 pointer-events-none"
                     style={{ pointerEvents: 'none' }}
                 >
-                    {/* Background Layer with absolute positioning to ensure it covers properly */}
+                    {/* Background Layer */}
                     <div className="absolute inset-0 z-0 bg-black">
                         <div
                             className="absolute inset-0 z-0"
                             style={{
-                                background: 'radial-gradient(circle at 50% 100%, #000000 20%, #4c1d95 50%, #7c3aed 80%, #ffffff 100%)',
+                                background: 'radial-gradient(circle at 50% 100%, #000000 20%, #4c1d95 60%, #ffffff 100%)',
                                 filter: 'blur(0px)'
                             }}
                         />
@@ -233,12 +229,7 @@ const LoginPage = () => {
 
                     {/* Content Layer */}
                     <div className="relative z-10 text-center pb-8 p-6">
-                        <div className="flex items-center justify-center gap-2 text-white/90 mb-6">
-                            <Circle className="w-6 h-6 fill-white stroke-white" />
-                            <span className="text-lg font-semibold tracking-tight">OnlyPipe</span>
-                        </div>
-
-                        <div className="max-w-md mx-auto">
+                        <div className="max-w-md mx-auto flex justify-end items-center">
                             <motion.div
                                 key={isSignUp ? "signup-text" : "signin-text"}
                                 initial={{ opacity: 0, y: 20 }}
@@ -252,27 +243,6 @@ const LoginPage = () => {
                                     {isSignUp ? "Complete these easy steps to register your account." : "We are glad to see you again! Access your dashboard now."}
                                 </p>
                             </motion.div>
-
-                            {isSignUp && (
-                                <div className="space-y-3">
-                                    {steps.map((step) => (
-                                        <motion.div
-                                            key={step.number}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.2 + (step.number * 0.1) }}
-                                            className={`flex items-center gap-4 px-5 py-4 rounded-xl transition-all ${step.active ? 'bg-white/10 border border-white/10' : 'bg-white/5 border border-transparent'}`}
-                                        >
-                                            <div className={`flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold ${step.active ? 'bg-green-500 text-white' : 'bg-zinc-700 text-zinc-300'}`}>
-                                                {step.number}
-                                            </div>
-                                            <span className={`font-medium text-sm ${step.active ? 'text-white' : 'text-zinc-400'}`}>
-                                                {step.text}
-                                            </span>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            )}
                         </div>
                     </div>
                 </motion.div>
@@ -281,4 +251,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default LoginPage;   
