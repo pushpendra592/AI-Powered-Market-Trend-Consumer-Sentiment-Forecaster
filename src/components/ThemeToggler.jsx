@@ -40,7 +40,7 @@ const ThemeToggler = () => {
                 ]
             },
             {
-                duration: 2000,
+                duration: 1000,
                 easing: 'ease-out',
                 pseudoElement: '::view-transition-new(root)'
             }

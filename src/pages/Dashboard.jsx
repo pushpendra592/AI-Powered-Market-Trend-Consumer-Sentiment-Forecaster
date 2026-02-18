@@ -68,7 +68,7 @@ function Dashboard() {
             </header>
 
             {/* Key Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <SentimentCard
                     title="Current Sentiment"
                     score={selectedProduct?.current_sentiment || 0}
@@ -95,14 +95,14 @@ function Dashboard() {
                 />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 {/* Main Trend Chart */}
-                <div className="lg:col-span-2 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-6 min-h-[400px]">
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-200 mb-4 flex items-center gap-2">
+                <div className="lg:col-span-3 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-6 min-h-[500px]">
+                    <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-200 mb-6 flex items-center gap-2">
                         <TrendingUp className="w-5 h-5 text-brand-600 dark:text-brand-400" />
                         Sentiment Trend (7 Days)
                     </h2>
-                    <div className="h-[320px] w-full">
+                    <div className="h-[400px] w-full">
                         {!loading ? (
                             <TrendChart data={sentimentData} />
                         ) : (
@@ -111,13 +111,13 @@ function Dashboard() {
                     </div>
                 </div>
 
-                {/* Topics & Sources */}
-                <div className="space-y-6">
+                {/* Topics & Sources - Right Sidebar */}
+                <div className="space-y-6 lg:col-span-1">
                     <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-6">
-                        <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-200 mb-4">Trending Topics</h2>
+                        <h2 className="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-4">Trending Topics</h2>
                         <div className="flex flex-wrap gap-2">
-                            {['Battery Life', 'Camera Zoom', 'Face ID', 'Overheating', 'Price', 'Design', 'AI Features'].map((tag) => (
-                                <span key={tag} className="bg-brand-50 dark:bg-zinc-800 text-brand-700 dark:text-brand-300 border border-brand-100 dark:border-zinc-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-brand-100 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+                            {['Battery', 'Zoom', 'Face ID', 'Heat', 'Price', 'AI', 'Design'].map((tag) => (
+                                <span key={tag} className="bg-slate-50 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-700 px-3 py-1 rounded-lg text-xs font-medium hover:bg-slate-100 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
                                     {tag}
                                 </span>
                             ))}
@@ -125,17 +125,17 @@ function Dashboard() {
                     </div>
 
                     <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-6">
-                        <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-200 mb-4">Source Breakdown</h2>
-                        <div className="space-y-3">
+                        <h2 className="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-4">Sources</h2>
+                        <div className="space-y-4">
                             {selectedProduct?.platform_breakdown && Object.entries(selectedProduct.platform_breakdown).map(([source, percentage]) => (
                                 <div key={source}>
-                                    <div className="flex justify-between text-sm mb-1 capitalize">
-                                        <span className="text-slate-600 dark:text-zinc-400">{source}</span>
-                                        <span className="font-medium text-slate-900 dark:text-zinc-200">{percentage}%</span>
+                                    <div className="flex justify-between text-xs mb-2">
+                                        <span className="text-slate-700 dark:text-zinc-300 capitalize font-medium">{source}</span>
+                                        <span className="text-slate-500 dark:text-zinc-500">{percentage}%</span>
                                     </div>
-                                    <div className="w-full bg-slate-100 dark:bg-zinc-800 rounded-full h-2">
+                                    <div className="w-full bg-slate-100 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                                         <div
-                                            className="bg-brand-500 dark:bg-brand-500 h-2 rounded-full"
+                                            className="bg-brand-500 dark:bg-brand-500 h-full rounded-full"
                                             style={{ width: `${percentage}%` }}
                                         ></div>
                                     </div>

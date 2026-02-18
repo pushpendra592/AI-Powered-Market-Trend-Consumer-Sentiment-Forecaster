@@ -9,28 +9,45 @@ export default {
         extend: {
             colors: {
                 brand: {
-                    50: '#faf5ff',
-                    100: '#f3e8ff',
-                    200: '#e9d5ff',
-                    300: '#d8b4fe',
-                    400: '#c084fc',
-                    500: '#a855f7',
-                    600: '#9333ea', // Primary Purple
-                    700: '#7e22ce',
-                    800: '#6b21a8',
-                    900: '#581c87',
-                    950: '#3b0764',
+                    50: '#f5f3ff',
+                    100: '#ede9fe',
+                    200: '#ddd6fe',
+                    300: '#c4b5fd',
+                    400: '#a78bfa',
+                    500: '#8b5cf6', // Primary Brand Color
+                    600: '#7c3aed', // Hover / Active
+                    700: '#6d28d9',
+                    800: '#5b21b6',
+                    900: '#4c1d95',
+                    950: '#2e1065',
                 },
                 // Dark mode overrides for deeper blacks/greys
                 dark: {
-                    bg: '#000000',      // Pure black background
-                    card: '#121212',    // Dark grey for cards
+                    bg: '#000000',       // Pure Black
+                    surface: '#121212',  // Darker Grey for surface/cards
+                    card: '#121212',     // Darker Grey for cards
                     cardHover: '#1e1e1e', // Lighter grey for hover
-                    border: '#27272a',  // Subtle border
-                }
+                    border: '#27272a',   // Zinc-800
+                },
+                success: '#10b981', // Emerald-500
+                warning: '#f59e0b', // Amber-500
+                error: '#ef4444',   // Red-500
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+                'glow': '0 0 20px -5px rgba(139, 92, 246, 0.3)',
+                'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)'
+            },
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                }
+            },
+            animation: {
+                'fade-in': 'fadeIn 0.5s ease-out',
             }
         },
     },
