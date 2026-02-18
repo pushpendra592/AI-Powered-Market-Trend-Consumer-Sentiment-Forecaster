@@ -116,7 +116,7 @@ function Dashboard() {
                     <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-6">
                         <h2 className="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-4">Trending Topics</h2>
                         <div className="flex flex-wrap gap-2">
-                            {['Battery', 'Zoom', 'Face ID', 'Heat', 'Price', 'AI', 'Design'].map((tag) => (
+                            {['Dermatologist', 'Dupes', 'Filters', 'Waterproof', 'Price', 'Texture', 'Fragrance'].map((tag) => (
                                 <span key={tag} className="bg-slate-50 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-700 px-3 py-1 rounded-lg text-xs font-medium hover:bg-slate-100 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
                                     {tag}
                                 </span>

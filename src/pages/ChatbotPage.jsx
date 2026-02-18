@@ -46,10 +46,10 @@ const ChatbotPage = () => {
     };
 
     const suggestedQuestions = [
-        "Why is iPhone sentiment dropping?",
-        "Compare Samsung S24 vs Pixel 8 battery reviews",
-        "What are the top complaints about the new update?",
-        "Is sentiment trending positive for feature X?"
+        "Why is Neutrogena sentiment lower than La Roche-Posay?",
+        "Compare Minimalist vs Cetaphil whitecast reviews",
+        "What are the top complaints about oxybenzone in sunscreens?",
+        "Is sentiment trending positive for La Roche-Posay waterproof formula?"
     ];
 
     return (
