@@ -125,9 +125,6 @@ const LandingPage = () => {
                         <TrendingUp className="w-6 h-6" />
                         <span>TrendForecast.ai</span>
                     </div>
-                    <p className="text-slate-500 dark:text-zinc-500 text-sm">
-                        © 2024 Market Trend Forecaster. All rights reserved.
-                    </p>
                 </div>
             </footer>
         </div>
