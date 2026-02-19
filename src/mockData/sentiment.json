@@ -2,11 +2,11 @@
     "prod_1": [
         {
             "date": "2024-02-01",
-            "sentiment": 70
+            "sentiment": 60
         },
         {
             "date": "2024-02-02",
-            "sentiment": 75
+            "sentiment": 65
         },
         {
             "date": "2024-02-03",
