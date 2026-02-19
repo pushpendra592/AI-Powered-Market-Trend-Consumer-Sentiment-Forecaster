@@ -36,7 +36,8 @@ export const getProducts = async () => {
 export const getProductSentiment = async (productId) => {
     if (USE_MOCK_DATA) {
         return new Promise((resolve) => {
-            setTimeout(() => resolve(sentimentMock), 500);
+            const data = sentimentMock[productId] || [];
+            setTimeout(() => resolve(data), 500);
         });
     }
     const response = await apiClient.get(`/products/${productId}/sentiment`);
