@@ -2,7 +2,7 @@
     "prod_1": [
         {
             "date": "2024-02-01",
-            "sentiment": 72
+            "sentiment": 70
         },
         {
             "date": "2024-02-02",
@@ -14,11 +14,11 @@
         },
         {
             "date": "2024-02-04",
-            "sentiment": 76
+            "sentiment": 80
         },
         {
             "date": "2024-02-05",
-            "sentiment": 73
+            "sentiment": 72
         },
         {
             "date": "2024-02-06",
@@ -26,7 +26,7 @@
         },
         {
             "date": "2024-02-07",
-            "sentiment": 74
+            "sentiment": 70
         }
     ],
     "prod_2": [
