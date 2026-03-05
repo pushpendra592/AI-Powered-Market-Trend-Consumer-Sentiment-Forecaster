@@ -8,6 +8,24 @@
   mix-blend-mode: normal;
 }
 
+/* Default: new view on top (for expanding circle dark→light) */
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+/* Reverse: old view on top (for contracting circle light→dark) */
+.theme-transition-reverse::view-transition-old(root) {
+  z-index: 2;
+}
+
+.theme-transition-reverse::view-transition-new(root) {
+  z-index: 1;
+}
+
 @layer base {
   body {
     @apply bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-slate-50 font-sans antialiased transition-colors duration-300;

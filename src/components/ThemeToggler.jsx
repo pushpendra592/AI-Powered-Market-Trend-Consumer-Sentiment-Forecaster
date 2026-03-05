@@ -1,6 +1,5 @@
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import clsx from 'clsx';
 
 const ThemeToggler = () => {
     const { theme, toggleTheme } = useTheme();
@@ -15,15 +14,22 @@ const ThemeToggler = () => {
         const button = e.currentTarget;
         const rect = button.getBoundingClientRect();
 
-        // Calculate center of the button
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
 
-        // Calculate radius to cover the furthest corner of the screen
         const endRadius = Math.hypot(
             Math.max(x, innerWidth - x),
             Math.max(y, innerHeight - y)
         );
+
+        const isDarkToLight = theme === 'dark';
+
+        // Set reverse class for light→dark so CSS flips z-index
+        if (!isDarkToLight) {
+            document.documentElement.classList.add('theme-transition-reverse');
+        } else {
+            document.documentElement.classList.remove('theme-transition-reverse');
+        }
 
         const transition = document.startViewTransition(() => {
             toggleTheme();
@@ -31,20 +37,42 @@ const ThemeToggler = () => {
 
         await transition.ready;
 
-        // Animate the clip-path
-        document.documentElement.animate(
-            {
-                clipPath: [
-                    `circle(0px at ${x}px ${y}px)`,
-                    `circle(${endRadius}px at ${x}px ${y}px)`
-                ]
-            },
-            {
-                duration: 1000,
-                easing: 'ease-out',
-                pseudoElement: '::view-transition-new(root)'
-            }
-        );
+        if (isDarkToLight) {
+            // Dark → Light: circle EXPANDS from button outward
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(0px at ${x}px ${y}px)`,
+                        `circle(${endRadius}px at ${x}px ${y}px)`
+                    ]
+                },
+                {
+                    duration: 800,
+                    easing: 'ease-out',
+                    pseudoElement: '::view-transition-new(root)'
+                }
+            );
+        } else {
+            // Light → Dark: circle CONTRACTS back to button
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(${endRadius}px at ${x}px ${y}px)`,
+                        `circle(0px at ${x}px ${y}px)`
+                    ]
+                },
+                {
+                    duration: 800,
+                    easing: 'ease-in',
+                    fill: 'forwards',
+                    pseudoElement: '::view-transition-old(root)'
+                }
+            );
+        }
+
+        // Clean up the class after transition finishes
+        await transition.finished;
+        document.documentElement.classList.remove('theme-transition-reverse');
     };
 
     return (
